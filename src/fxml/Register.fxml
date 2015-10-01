@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegisterController">
+   <children>
+      <Text layoutX="137.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register your account">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <TextField fx:id="register_firstName" layoutX="225.0" layoutY="77.0" promptText="First Name" />
+      <TextField fx:id="register_lastName" layoutX="225.0" layoutY="109.0" promptText="Last Name" />
+      <TextField fx:id="register_IBAN" layoutX="226.0" layoutY="141.0" promptText="IBAN" />
+      <TextField fx:id="register_userName" layoutX="225.0" layoutY="188.0" promptText="User Name" />
+      <PasswordField fx:id="register_password" layoutX="225.0" layoutY="220.0" promptText="Password" />
+      <PasswordField fx:id="register_confirmedPassword" layoutX="225.0" layoutY="253.0" promptText="Confirm Password" />
+      <Button fx:id="register_register" layoutX="226.0" layoutY="361.0" mnemonicParsing="false" onAction="#register" text="Register" />
+      <CheckBox fx:id="register_acceptTC" layoutX="226.0" layoutY="330.0" mnemonicParsing="false" onAction="#enableRegister" text="I have 'read' the Terms and Conditions for MMORPG and I hereby agree">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </CheckBox>
+      <Button fx:id="register_back" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#goToLogin" text="Back" />
+      <ComboBox fx:id="serverList" layoutX="225.0" layoutY="290.0" prefWidth="150.0" promptText="Choose server" />
+   </children>
+</AnchorPane>
