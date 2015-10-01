@@ -41,17 +41,13 @@ public class GameManager {
         }
     }
     
-    public List<String> checkUserName(String userName){
-        Query q = em.createQuery("SELECT u.userName FROM User u WHERE u.userName = :userName");
-        q.setParameter("userName", userName);
-        List<String> results = q.getResultList();
-        return results;
-    }
-    
     public User getUser(String userName){
         Query q = em.createQuery("SELECT u FROM User u WHERE u.userName = :userName");
         q.setParameter("userName", userName);
-        return (User) q.getResultList().get(0);
+        if (!q.getResultList().isEmpty())
+            return (User) q.getResultList().get(0);
+        else 
+            return null;
     }
     
     public boolean validateLogin(String userName, String password){
