@@ -66,11 +66,9 @@ public class GameManager {
 
     public void updateUserWallet(Integer amount){
         et.begin();
-        Query q1 = em.createQuery("SELECT u.balance FROM User u WHERE u.userName = :userName");
-        q1.setParameter("userName", loggedInUser.getUserName());
-        List<Integer> result = q1.getResultList();
+        int result = getUserWallet();
         
-        Integer newBalance = result.get(0) + amount;
+        Integer newBalance = result + amount;
         Query q2 = em.createQuery("UPDATE User u SET u.balance = " + newBalance + " WHERE u.userName = :userName");
         q2.setParameter("userName", loggedInUser.getUserName());
         q2.executeUpdate();
@@ -115,7 +113,6 @@ public class GameManager {
     
     public void updateCharacterSlots(int slots){
         et.begin();
-        
         Query q1 = em.createQuery("SELECT u.characterSlots FROM User u WHERE u.userName = :userName");
         q1.setParameter("userName", loggedInUser.getUserName());
         List<Integer> result = q1.getResultList();
@@ -215,7 +212,7 @@ public class GameManager {
     }
     
     public void generateData(){
-        for (int i = 0; i < 5000; i++){
+        for (int i = 1; i <= 5000; i++){
             String firstName = createRandomString();
             String lastName = createRandomString();
             String iban = createRandomString();
@@ -240,7 +237,6 @@ public class GameManager {
             
             System.out.println(i);
         }
-        
     }
 }
     
