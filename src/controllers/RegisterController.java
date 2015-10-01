@@ -71,7 +71,7 @@ public class RegisterController extends ControlledScreen implements Initializabl
 
     @FXML
     private void register(ActionEvent event) {
-        List<String> checkedUserNames = GameManager.gm.checkUserName(register_userName.getText());
+        User checkedUserName = GameManager.gm.getUser(register_userName.getText());
         
         if (!register_password.getText().equals(register_confirmedPassword.getText())){
             HelperTools.showInfoAlert(Alert.AlertType.WARNING, "Error", null, "Your password is not the same as your confirmed password, please check again");
@@ -79,7 +79,7 @@ public class RegisterController extends ControlledScreen implements Initializabl
             register_confirmedPassword.clear();
         }
                 
-        else if (!checkedUserNames.isEmpty()){
+        else if (checkedUserName != null){
             HelperTools.showInfoAlert(Alert.AlertType.WARNING, "Error", null, "User name already in use. Pick another one please.");
             register_userName.clear();
             register_password.clear();
